@@ -1,0 +1,24 @@
+{
+  "name": "constr-sw-2020-2-grupo5",
+  "version": "1.0.0",
+  "description": "Construção de Software - Grupo 5",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "Testando 1,2,3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AGES-PUCRS/constr-sw-2020-2-grupo5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AGES-PUCRS/constr-sw-2020-2-grupo5/issues"
+  },
+  "homepage": "https://github.com/AGES-PUCRS/constr-sw-2020-2-grupo5#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
