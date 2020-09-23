@@ -20,5 +20,9 @@
   "homepage": "https://github.com/AGES-PUCRS/constr-sw-2020-2-grupo5#readme",
   "devDependencies": {
     "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.10.6"
   }
 }
