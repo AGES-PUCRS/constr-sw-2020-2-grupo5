@@ -1,0 +1,36 @@
+swagger: "2.0"
+info:
+  description: "Documentação do microserviço de Conteudos"
+  version: "0.0.1"
+  title: "Docs Serviço de Conteudos"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+
+
+host: "conteudos.swagger.io"
+basePath: "/"
+tags:
+- name: "conteudo"
+  description: "conteudos"
+schemes:
+- "http"
+paths:
+  /:
+    get:
+      tags:
+      - "sample route"
+      summary: "get"
+      description: "get sample"
+      operationId: "get"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "OK"
+  
