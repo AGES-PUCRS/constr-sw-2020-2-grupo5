@@ -4,8 +4,9 @@
   "description": "Construção de Software - Grupo 5",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "test": "Testando 1,2,3"
+    "start": "node ./index.js",
+    "dev": "nodemon ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,9 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
-    "mongoose": "^5.10.6"
+    "mongoose": "^5.10.6",
+    "express": "^4.17.1"
   }
 }
