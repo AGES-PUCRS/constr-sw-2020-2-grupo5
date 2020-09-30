@@ -1,6 +1,7 @@
 const path = require('path');
 const http = require('http');
 const express = require("express");
+const mongoose = require('mongoose');
 const routes = require('./routes.js');
 const database = require("./services/database");
 const cors = require("cors")({
@@ -10,6 +11,8 @@ const cors = require("cors")({
 const app = express();
 app.use(cors);
 app.use(express.json());
+
+mongoose.connect('mongodb://user:pass@localhost:27017/', { useNewUrlParser: true, useUnifiedTopology: true});
 
 const server = {
     http: http.createServer(app),
