@@ -5,8 +5,8 @@ const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./swagger.yaml');
 const mongoose = require('mongoose');
-const routes = require('./routes.js');
-const database = require("./services/database");
+const routes = require('./src/routes/routes.js');
+const database = require("./src/services/database");
 const cors = require("cors")({
     origin: true
 });

@@ -1,4 +1,4 @@
-const database = require('./services/database');
+const database = require('../services/database');
 
 module.exports = function routes({ app }) {
   app.get('/', (req, res) => {
