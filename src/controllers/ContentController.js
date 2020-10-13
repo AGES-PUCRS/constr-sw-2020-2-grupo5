@@ -5,10 +5,16 @@ const Content = mongoose.model("Content");
 
 module.exports = {
   async listAllContents(req, res) {
-    const contents = await Content.find();
-    console.log(contents);
+    try {
+      const contents = await Content.find();
+      console.log(contents);
+      res.status(200)
+      return res.json(contents);
+    } catch {
+      res.status(400)
+      return res.send("Erro ao buscar Conteudos")
+    }
 
-    return res.json(contents);
   },
 
   async getContentById(req, res) {
@@ -16,7 +22,7 @@ module.exports = {
     try {
       const content = await Content.findById(id);
       console.log(content);
-    } catch {}
+    } catch { }
   },
 
   async deleteContent(req, res) {
