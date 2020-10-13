@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
-const ContentModel = new mongoose.Schema({
-    id:{
-        type: String,
-        required: true
-    },
+const ContentSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -24,4 +20,4 @@ const ContentModel = new mongoose.Schema({
     },
 })
 
-mongoose.model('Content', ContentModel);
+module.exports = mongoose.model('Content', ContentSchema);

@@ -1,10 +1,13 @@
-const database = require('../services/database');
+const express = require('express');
+const routes = express.Router();
 
-module.exports = function routes({ app }) {
-  app.get('/', (req, res) => {
-    console.log("GET /");
-    res.status(200).json({
-      message: 'Routing sample'
-    });
-  });
-}
+const ContestController = require('../controllers/ContentController');
+
+routes.get('/content', ContestController.listAllContents);
+routes.get('/content/:id', ContestController.getContentById);
+routes.delete('/content/:id', ContestController.deleteContent);
+routes.post('/content', ContestController.createContent);
+routes.put('/content/:id', ContestController.putContent);
+routes.patch('/content/:id', ContestController.patchContent);
+
+module.exports = routes;

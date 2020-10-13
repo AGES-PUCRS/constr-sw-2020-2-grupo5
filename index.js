@@ -25,13 +25,14 @@ var options = {
     explorer: true
 };
 
+// Start routes
+app.use('/', routes);
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 const ENV_FILE = path.join(__dirname, '.env');
 require('dotenv').config({ path: ENV_FILE });
 
-// Start routes
-routes({ app });
 
 console.log("Starting Server")
 
