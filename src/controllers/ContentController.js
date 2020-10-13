@@ -1,11 +1,9 @@
-require('../models/ContentModel');
+require("../models/ContentModel");
 
-const mongoose = require('mongoose');
-const Content = mongoose.model('Content');
+const mongoose = require("mongoose");
+const Content = mongoose.model("Content");
 
 module.exports = {
-    
-
   async listAllContents(req, res) {
     const contents = await Content.find();
     console.log(contents);
@@ -15,39 +13,62 @@ module.exports = {
 
   async getContentById(req, res) {
     const { id } = req.params;
-
-    const content = await Content.findById(id);
-    console.log(content);
+    try {
+      const content = await Content.findById(id);
+      console.log(content);
+    } catch {}
   },
 
-  
   async deleteContent(req, res) {
     const { id } = req.params;
-
-    const remove = await Content.findByIdAndRemove(id);
-
-    console.log(remove);
-
+    try {
+      const remove = await Content.findByIdAndRemove(id);
+      res.status(200);
+      return res.send();
+    } catch {
+      res.status(404);
+      res.send("Não foi possível deletar este objeto");
+    }
   },
-  
+
   async createContent(req, res) {
     console.log(req.body);
 
-    const content = await Content.create(req.body);
+    try {
+      const content = await Content.create(req.body);
+      res.status(201);
+      return res.json(content);
+    } catch {
+      res.status(302);
+      res.send("Objeto já existe");
+    }
   },
 
   async putContent(req, res) {
     const { id } = req.params;
     const { body } = req;
 
-    const content = await Content.findByIdAndUpdate(id, body);
+    try {
+      const content = await Content.findByIdAndUpdate(id, body);
+      res.status(200);
+      return res.json(content);
+    } catch {
+      res.status(404);
+      res.send("Não foi possível atualizar o objeto");
+    }
   },
 
   async patchContent(req, res) {
     const { id } = req.params;
     const { body } = req;
 
-    const content = await Content.findByIdAndUpdate(id, body);
+    try {
+      const content = await Content.findByIdAndUpdate(id, body);
+      res.status(200);
+      return res.json(content);
+    } catch {
+      res.status(404);
+      res.send("Não foi possível atualizar o objeto");
+    }
   },
-
-}
+};
