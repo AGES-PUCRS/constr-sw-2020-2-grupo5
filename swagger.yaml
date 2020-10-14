@@ -1,36 +1,180 @@
 swagger: "2.0"
 info:
-  description: "Documentação do microserviço de Conteudos"
+  description: "Documentação do microserviço de Conteúdos"
   version: "0.0.1"
-  title: "Docs Serviço de Conteudos"
+  title: "Docs Serviço de Conteúdos"
   termsOfService: "http://swagger.io/terms/"
   contact:
     email: "apiteam@swagger.io"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-
-
 host: "conteudos.swagger.io"
 basePath: "/"
 tags:
-- name: "conteudo"
-  description: "conteudos"
+- name: "conteúdo"
+  description: "Manipulação de conteúdos"
 schemes:
 - "http"
+- "https"
+
 paths:
-  /:
+
+  /content:
     get:
       tags:
-      - "sample route"
-      summary: "get"
-      description: "get sample"
-      operationId: "get"
+      - "conteúdo"
+      summary: "Lista todos os conteúdos"
+      operationId: "listAllContents"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       responses:
         "200":
-          description: "OK"
-  
+          description: "Ok"
+        schema:
+          $ref: "#/definitions/Content"
+    post:
+      tags:
+      - "conteúdo"
+      summary: "Cria um conteúdos"
+      operationId: "createContent"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Content"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "201":
+          description: "Created"
+          schema:
+            $ref: "#/definitions/Content"
+        "302":
+          description: "Found: Objeto já existente"
+
+  /content/{id}:
+    get:
+      tags:
+      - "conteúdo"
+      summary: "Busca conteúdo por ID"
+      operationId: "getContentById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/Content"
+    put:
+      tags:
+      - "conteúdo"
+      summary: "Atualiza um conteúdo"
+      operationId: "putContent"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Content"
+      responses:
+        "200":
+          description: "Ok"
+        "404":
+          description: "Not found: Objeto não encontrado"
+    patch:
+      tags:
+      - "conteúdo"
+      summary: "Atualiza parcialmente um conteúdo"
+      operationId: "patchContent"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Content"
+      responses:
+        "200":
+          description: "Ok"
+        "404":
+          description: "Not found: Objeto não encontrado"
+    delete:
+      tags:
+      - "conteúdo"
+      summary: "Deleta um conteúdo"
+      operationId: "deleteContent"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Ok"
+        "404":
+          description: "Not found: Objeto não encontrado"
+definitions:
+  Contents:
+    type: array
+    items:
+      $ref: "#/definitions/Content"
+  Content:
+    type: "object"
+    required:
+    - "name"
+    - "description"
+    - "material"
+    - "bibliography"
+    properties:
+      name:
+        type: "string"
+        example: "Reutilização de software"
+      description:
+        type: "string"
+        example: "A reutilização de software é uma das áreas da engenharia de software."
+      material:
+        type: "array"
+        items:
+          type: "string"
+          example: ["Site sobre reutilização de software", "https://www.devmedia.com.br/reutilizacao-de-software-revista-engenharia-de-software-magazine-39/21956"]
+      bibliography:
+        type: "array"
+        items:
+          type: "string"
+          example: ["Indicação de livro", "SOMMERVILLE, Engenharia de Software - 2003."]
