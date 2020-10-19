@@ -6,8 +6,7 @@ const Content = mongoose.model("Content");
 module.exports = {
   async listAllContents(req, res) {
     try {
-      const contents = await Content.find();
-      console.log(contents);
+      const contents = await Content.find(req.query);
       res.status(200)
       return res.json(contents);
     } catch {
@@ -21,8 +20,12 @@ module.exports = {
     const { id } = req.params;
     try {
       const content = await Content.findById(id);
-      console.log(content);
-    } catch { }
+      res.status(200);
+      return res.json(content);
+    } catch {
+      res.status(400)
+      return res.send(`Erro ao buscar conteúdo com o id ${id}`)
+    }
   },
 
   async deleteContent(req, res) {

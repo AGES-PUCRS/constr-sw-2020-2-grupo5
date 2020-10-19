@@ -9,7 +9,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "conteudos.swagger.io"
+host: "3.21.130.129:5000"
 basePath: "/"
 tags:
 - name: "conteúdo"
