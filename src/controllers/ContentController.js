@@ -24,13 +24,15 @@ module.exports = {
     try {
       let content = await Content.findById(id);
       if (req.query.expand === 'aulas') {
-        const resp = await axios.get(`${classesURL}`);
-        const respFilter = resp ? resp.filter(item => (
-          item.data.content === id
-        )) : [];
+        const resp = await axios.get('http://ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes');
+        const classes = resp.data.data;
+        const respFilter = classes ? classes.filter(item => {
+          return item.content === id
+        }
+      ) : [];
 
         respFilter.map(x => {
-          content.aulas.push(x.data);
+          content.aulas.push(x);
         })
       }
       res.status(200);
