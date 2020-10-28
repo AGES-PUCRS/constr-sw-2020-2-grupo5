@@ -18,6 +18,11 @@ const ContentSchema = new mongoose.Schema({
         type: Array,
         requires: false
     },
+
+    aulas: {
+        type: Array,
+        requires: false,
+    }
 })
 
 module.exports = mongoose.model('Content', ContentSchema);

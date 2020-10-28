@@ -1,7 +1,10 @@
 require("../models/ContentModel");
 
 const mongoose = require("mongoose");
+const axios = require('axios');
+
 const Content = mongoose.model("Content");
+const classesURL = 'http://ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes';
 
 module.exports = {
   async listAllContents(req, res) {
@@ -19,7 +22,17 @@ module.exports = {
   async getContentById(req, res) {
     const { id } = req.params;
     try {
-      const content = await Content.findById(id);
+      let content = await Content.findById(id);
+      if (req.query.expand === 'aulas') {
+        const resp = await axios.get(`${classesURL}`);
+        const respFilter = resp ? resp.filter(item => (
+          item.data.content === id
+        )) : [];
+
+        respFilter.map(x => {
+          content.aulas.push(x.data);
+        })
+      }
       res.status(200);
       return res.json(content);
     } catch {
