@@ -1,47 +1,62 @@
 <h1>Salas de Aula</h1>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element, let i = index"> {{i + 1}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="room">
-    <th mat-header-cell *matHeaderCellDef> Número </th>
-    <td mat-cell *matCellDef="let element"> {{element.numero}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="building">
-    <th mat-header-cell *matHeaderCellDef> Prédio </th>
-    <td mat-cell *matCellDef="let element"> {{element.towerNumber}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="situation">
-    <th mat-header-cell *matHeaderCellDef> Situação </th>
-    <td mat-cell *matCellDef="let element"> {{element.online}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="capacity">
-    <th mat-header-cell *matHeaderCellDef> Lotação máxima </th>
-    <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="resources">
-    <th mat-header-cell *matHeaderCellDef> Recursos </th>
-    <td mat-cell *matCellDef="let element"> - </td>
-  </ng-container>
-
-  <ng-container matColumnDef="edit">
-    <th mat-header-cell *matHeaderCellDef> Editar </th>
-    <td mat-cell *matCellDef="let element"> - </td>
-  </ng-container>
-
-  <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef> Excluir </th>
-    <td mat-cell *matCellDef="let element"> - </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="columns"></tr>
-  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-</table>
+<div class="form-container">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="search($event)" #input>
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource">
+  
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element, let i = index"> {{i + 1}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="room">
+      <th mat-header-cell *matHeaderCellDef> Número </th>
+      <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="building">
+      <th mat-header-cell *matHeaderCellDef> Prédio </th>
+      <td mat-cell *matCellDef="let element"> {{element.towerNumber}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="situation">
+      <th mat-header-cell *matHeaderCellDef> Situação </th>
+      <td mat-cell *matCellDef="let element"> {{element.online}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="capacity">
+      <th mat-header-cell *matHeaderCellDef> Lotação máxima </th>
+      <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="resources">
+      <th mat-header-cell *matHeaderCellDef> Recursos </th>
+      <td mat-cell *matCellDef="let element"> - </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
+      <td mat-cell *matCellDef="let element"> - </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Excluir </th>
+      <td mat-cell *matCellDef="let element"> - </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  
+  
+</div>
