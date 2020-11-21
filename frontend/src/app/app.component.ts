@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { RoomService } from './room.service';
 import { OnInit } from '@angular/core';
-import { Rooms } from 'src/interfaces/RoomsInterface';
+import { Room } from 'src/interfaces/RoomsInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null;
 
-  dataSource: MatTableDataSource<Rooms>;
+  dataSource: MatTableDataSource<Room>;
   columns: string[] = ["id", "room", "building", "situation", "capacity", "resources", "reserves", "edit", "delete"];
 
   constructor(private roomService: RoomService) {
@@ -48,4 +48,13 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
 
   }
+  deleteRoom(room: Room) {
+
+  }
+
+  editRoom(room: Room) {
+
+  }
+
 }
+
