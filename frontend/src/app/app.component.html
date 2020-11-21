@@ -4,14 +4,18 @@
   </mat-tab-group>
 </div>
 
-<h1>Salas de Aula</h1>
+<div class="header">
+  <h1>Salas de Aula</h1>
+</div>
 
-<div class="form-container">
+<div class="search-container">
   <mat-form-field>
-    <mat-label>Filter</mat-label>
+    <mat-label>Search</mat-label>
     <input matInput (keyup)="search($event)" #input>
   </mat-form-field>
+</div>
 
+<div class="form-container">
   <table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="id">

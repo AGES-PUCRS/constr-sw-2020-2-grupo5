@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { RoomService } from './room.service';
 import { OnInit } from '@angular/core';
 import { Rooms } from 'src/interfaces/RoomsInterface';
@@ -8,7 +8,8 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'frontend';

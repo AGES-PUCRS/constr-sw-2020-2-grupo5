@@ -1,19 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #F0F0F5;}
 
   
-  .mat-tab-label-active 
-  {
-      color: #000000 !important;
-  } 
-  
-  .remove-border-bottom .mat-tab-header 
-  {
-      border-bottom: none;
-  }
-  
-  .mat-tab-group{ 
-    color: blueviolet;
-  }
+      /* Styles for tab labels */
+      .mat-tab-label {
+        min-width: 200px !important;
+        padding: 25px;
+
+    }
+
+    .mat-tab-group{
+        background-color:  white;
+        min-width: 400px
+    }
+    
