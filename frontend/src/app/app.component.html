@@ -41,22 +41,38 @@
 
     <ng-container matColumnDef="resources">
       <th mat-header-cell *matHeaderCellDef> Recursos </th>
-      <td mat-cell *matCellDef="let element"> - </td>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="reserves">
       <th mat-header-cell *matHeaderCellDef> Reservas </th>
-      <td mat-cell *matCellDef="let element"> - </td>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button>
+          <mat-icon>insert_invitation</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef> Editar </th>
-      <td mat-cell *matCellDef="let element"> - </td>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="editRoom(element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef> Excluir </th>
-      <td mat-cell *matCellDef="let element"> - </td>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="deleteRoom(element)">
+          <mat-icon>delete</mat-icon>
+       </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>

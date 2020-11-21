@@ -47,4 +47,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
 
   }
+
+  deleteRoom(room: Room) {
+
+  }
+
+  editRoom(room: Room){
+
+  }
 }
