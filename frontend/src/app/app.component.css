@@ -20,6 +20,8 @@
   left: 50px;
   top: 200px;
   background: #FFFFFF;
+  border-radius: 8px;
+  overflow:hidden !important;
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar {
