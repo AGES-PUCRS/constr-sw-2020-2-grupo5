@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Room } from 'src/interfaces/RoomsInterface';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { RoomService } from '../room.service';
 
 @Component({
@@ -20,10 +20,11 @@ export class AddFormComponent implements OnInit {
   ) {
     this.roomForm = this.formBuilder.group({
       _id: (data) ? data._id : null,
-      numero: (data) ? data.number : null,
-      predio: (data) ? data.towerNumber : null,
-      capacidade: (data) ? data.capacity : null,
-      recursos: (data) ? data.resources : null,
+      number: (data) ? data.number : null,
+      towerNumber: (data) ? data.towerNumber : null,
+      capacity: (data) ? data.capacity : null,
+      resources: (data) ? data.resources : null,
+      situacao: (data) ? data.online ? '1' : '2' : '1',
     });
   }
 
@@ -31,9 +32,12 @@ export class AddFormComponent implements OnInit {
   }
 
   submit() {
-    const data: Room = this.roomForm.value;
-    console.log(data);
-    return;
+    const data = this.roomForm.value;
+
+    data.online = data.situacao === '1' ?  false : true; 
+
+    delete data.situacao;
+
     if (data._id) {
       this.roomService.editRoom(data).subscribe(res => {
         console.log(res);

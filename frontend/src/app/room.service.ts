@@ -25,4 +25,8 @@ export class RoomService {
     return this.http.patch<Room>(`${this.apiUrl}/${room._id}`, room);
   }
 
+  deleteRoom(room: Room) {
+    return this.http.delete<Room>(`${this.apiUrl}/${room._id}`)
+  }
+
 }
