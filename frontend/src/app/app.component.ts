@@ -8,7 +8,6 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { AddFormComponent } from "./add-form/add-form.component";
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
-import { EditTableComponent } from "./edit-table/edit-table.component";
 import { ResourcesModalComponent } from './resources-modal/resources-modal.component';
 import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
 
