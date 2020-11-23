@@ -36,7 +36,7 @@
 
       <ng-container matColumnDef="situation">
         <th mat-header-cell *matHeaderCellDef> Situação </th>
-        <td mat-cell *matCellDef="let element"> {{element.online}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.online == true ? 'Online' : 'Presencial'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="capacity">
@@ -65,7 +65,7 @@
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef> Editar </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button>
+          <button mat-icon-button (click)="editRoom(element)">
             <mat-icon>edit</mat-icon>
           </button>
         </td>
@@ -73,7 +73,7 @@
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef> Excluir </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" (click)="deleteRoom(element)">
           <button mat-icon-button>
             <mat-icon>delete</mat-icon>
           </button>
