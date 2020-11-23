@@ -19,9 +19,11 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { AddFormComponent } from "./add-form/add-form.component";
+import {MatListModule} from '@angular/material/list';
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import { EditTableComponent } from "./edit-table/edit-table.component";
-
+import {ResourcesModalComponent} from './resources-modal/resources-modal.component';
+import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { EditTableComponent } from "./edit-table/edit-table.component";
     AddFormComponent,
     DeleteTableComponent,
     EditTableComponent,
-
+    ResourcesModalComponent,
+    ReservationsModalComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { EditTableComponent } from "./edit-table/edit-table.component";
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],

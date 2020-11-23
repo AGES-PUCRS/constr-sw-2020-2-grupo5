@@ -9,6 +9,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AddFormComponent } from "./add-form/add-form.component";
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import { EditTableComponent } from "./edit-table/edit-table.component";
+import { ResourcesModalComponent } from './resources-modal/resources-modal.component';
+import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -76,6 +78,22 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(EditTableComponent);
+  }
+
+  openResources(data: Room) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(ResourcesModalComponent, {data});
+  }
+
+  openReservations(data: Room) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(ReservationsModalComponent, {data});
   }
 
   closeDialog() {
