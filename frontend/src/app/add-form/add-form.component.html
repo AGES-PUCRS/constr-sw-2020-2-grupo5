@@ -4,31 +4,35 @@
     </div>
 
     <div class="modalcontainer">
-        <mat-form-field>
-            <mat-label>Número da sala</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Prédio</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-label style="margin-right: 175px; color: gray;">Situação</mat-label>
-        <mat-radio-group name="grpName" style="flex-direction: column; ">
-            <mat-radio-button value="1" name="op1" color="primary" style="margin-right: 60px;">
-                Presencial</mat-radio-button>
-            <mat-radio-button value="2" name="op2" color="primary">Online</mat-radio-button>
-        </mat-radio-group>
-        <mat-form-field>
-            <mat-label>Lotação Máxima</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Recursos</mat-label>
-            <input matInput>
-        </mat-form-field>
-        <div class="btn-group" style="margin-top:50px"> <button mat-raised-button class="button"
-                style="background-color:white; color:#1976D2; border-color: #1976D2;">CANCELAR</button>
-            <button mat-raised-button class="button">SALVAR</button></div>
+        <form [formGroup]="roomForm" (ngSubmit)="submit()">
 
+            <mat-form-field>
+                <mat-label>Número da sala</mat-label>
+                <input matInput formControlName="numero">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Prédio</mat-label>
+                <input matInput formControlName="predio">
+            </mat-form-field>
+            <mat-label style="margin-right: 175px; color: gray;">Situação</mat-label>
+            <mat-radio-group name="grpName" style="flex-direction: column; ">
+                <mat-radio-button value="1" name="op1" color="primary" style="margin-right: 60px;">
+                    Presencial</mat-radio-button>
+                <mat-radio-button value="2" name="op2" color="primary">Online</mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field>
+                <mat-label>Lotação Máxima</mat-label>
+                <input matInput formControlName="capacidade">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Recursos</mat-label>
+                <input matInput formControlName="recursos">
+            </mat-form-field>
+            <div class="btn-group" style="margin-top:50px">
+                <button mat-raised-button class="button"
+                    style="background-color:white; color:#1976D2; border-color: #1976D2;">CANCELAR</button>
+                <button mat-raised-button type="submit" class="button">SALVAR</button>
+            </div>
+        </form>
     </div>
 </div>

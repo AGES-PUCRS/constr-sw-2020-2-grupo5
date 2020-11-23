@@ -72,12 +72,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dialog.open(DeleteTableComponent);
   }
 
-  editRoom() {
+  editRoom(data: Room) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(EditTableComponent);
+    this.dialog.open(AddFormComponent, {data});
   }
 
   openResources(data: Room) {

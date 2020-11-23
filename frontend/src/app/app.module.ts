@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
@@ -18,8 +18,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
-import { AddFormComponent } from "./add-form/add-form.component";
 import {MatListModule} from '@angular/material/list';
+import { AddFormComponent } from "./add-form/add-form.component";
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import { EditTableComponent } from "./edit-table/edit-table.component";
 import {ResourcesModalComponent} from './resources-modal/resources-modal.component';
@@ -49,7 +49,8 @@ import { ReservationsModalComponent } from './reservations-modal/reservations-mo
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
-    MatListModule
+    MatListModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
