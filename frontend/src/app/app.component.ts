@@ -4,6 +4,11 @@ import { OnInit } from '@angular/core';
 import { Room } from 'src/interfaces/RoomsInterface';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+
+import { AddFormComponent } from "./add-form/add-form.component";
+import { DeleteTableComponent } from "./delete-table/delete-table.component";
+import { EditTableComponent } from "./edit-table/edit-table.component";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   dataSource: MatTableDataSource<Room>;
   columns: string[] = ["id", "room", "building", "situation", "capacity", "resources", "reserves", "edit", "delete"];
 
-  constructor(private roomService: RoomService) {
+  constructor(private roomService: RoomService, private dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
     this.paginator = null;
   }
@@ -49,12 +54,32 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   }
 
-  deleteRoom(room: Room) {
-
+  addRoom() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(AddFormComponent);
   }
 
-  editRoom(room: Room) {
+  deleteRoom() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(DeleteTableComponent);
+  }
 
+  editRoom() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    this.dialog.open(EditTableComponent);
+  }
+
+  closeDialog() {
+    this.dialog.closeAll();
   }
 
 }

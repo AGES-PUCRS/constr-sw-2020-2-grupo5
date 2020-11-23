@@ -7,33 +7,47 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FormsModule } from '@angular/forms';
+
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon'
-import { MatButtonModule } from '@angular/material/button'
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { AddFormComponent } from "./add-form/add-form.component";
+import { DeleteTableComponent } from "./delete-table/delete-table.component";
+import { EditTableComponent } from "./edit-table/edit-table.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddFormComponent,
+    DeleteTableComponent,
+    EditTableComponent,
+
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     NoopAnimationsModule,
+    MatDialogModule,
     MatTableModule,
     MatTabsModule,
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
