@@ -47,7 +47,7 @@
       <ng-container matColumnDef="resources">
         <th mat-header-cell *matHeaderCellDef> Recursos </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button>
+          <button mat-icon-button (click)="openResources(element)">
             <mat-icon>settings</mat-icon>
           </button>
         </td>
@@ -56,7 +56,7 @@
       <ng-container matColumnDef="reserves">
         <th mat-header-cell *matHeaderCellDef> Reservas </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button>
+          <button mat-icon-button (click)="openReservations(element)">
             <mat-icon>insert_invitation</mat-icon>
           </button>
         </td>
