@@ -64,8 +64,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   deleteRoom(data: Room) {
-    this.roomService.deleteRoom(data).subscribe(res => {
-      console.log(res);
+    const ref = this.dialog.open(DeleteTableComponent, {data})
+    ref.componentInstance.emit.subscribe((id: string) => {
+      this.updateTable(id);
+      ref.close();
     })
   }
 
@@ -91,6 +93,16 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(ReservationsModalComponent, {data});
+  }
+
+  updateTable(idDeleted: string) {
+    const tableData = this.dataSource.data;
+
+    const deletedItemIndex = tableData.findIndex(e => e._id === idDeleted);
+
+    if (deletedItemIndex >= 0) tableData.splice(deletedItemIndex, 1);
+    
+    this.dataSource.data = tableData;
   }
 
   closeDialog() {
