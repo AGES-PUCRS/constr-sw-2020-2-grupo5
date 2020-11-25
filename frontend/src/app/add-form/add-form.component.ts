@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Room } from 'src/interfaces/RoomsInterface';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import { RoomService } from '../room.service';
+import { RoomService } from '../../services/room.service';
 
 @Component({
   selector: 'app-add-form',

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Room } from 'src/interfaces/RoomsInterface';
-import { RoomService } from '../room.service';
+import { RoomService } from '../../services/room.service';
 
 @Component({
   selector: 'app-delete-table',
