@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Room } from 'src/interfaces/RoomsInterface';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { RoomService } from '../room.service';
 
@@ -17,6 +17,7 @@ export class AddFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: Room,
     private formBuilder: FormBuilder,
     private roomService: RoomService,
+    private dialog: MatDialogRef<AddFormComponent>
   ) {
     this.roomForm = this.formBuilder.group({
       _id: (data) ? data._id : null,
@@ -47,6 +48,10 @@ export class AddFormComponent implements OnInit {
         console.log(res);
       });
     }
+  }
+
+  close() {
+    this.dialog.close();
   }
 
 }
