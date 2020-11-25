@@ -64,9 +64,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   deleteRoom(data: Room) {
-    this.roomService.deleteRoom(data).subscribe(res => {
-      console.log(res);
-    })
+    this.dialog.open(DeleteTableComponent, {data})
+    return;
+
   }
 
   editRoom(data: Room) {
