@@ -10,6 +10,7 @@ import { AddFormComponent } from "./add-form/add-form.component";
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import { ResourcesModalComponent } from './resources-modal/resources-modal.component';
 import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
+import { table } from 'console';
 
 @Component({
   selector: 'app-root',
@@ -64,9 +65,11 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   deleteRoom(data: Room) {
-    this.dialog.open(DeleteTableComponent, {data})
-    return;
-
+    const ref = this.dialog.open(DeleteTableComponent, {data})
+    ref.componentInstance.emit.subscribe((id: string) => {
+      this.updateTable(id);
+      ref.close();
+    })
   }
 
   editRoom(data: Room) {
@@ -91,6 +94,16 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(ReservationsModalComponent, {data});
+  }
+
+  updateTable(idDeleted: string) {
+    const tableData = this.dataSource.data;
+
+    const deletedItemIndex = tableData.findIndex(e => e._id === idDeleted);
+
+    if (deletedItemIndex >= 0) tableData.splice(deletedItemIndex, 1);
+    
+    this.dataSource.data = tableData;
   }
 
   closeDialog() {
