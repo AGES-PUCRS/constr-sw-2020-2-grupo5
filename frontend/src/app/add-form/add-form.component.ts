@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { Room } from 'src/interfaces/RoomsInterface';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
@@ -12,6 +12,7 @@ import { RoomService } from '../room.service';
 export class AddFormComponent implements OnInit {
 
   roomForm: FormGroup;
+  @Output() emit = new EventEmitter();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: Room,
@@ -39,14 +40,18 @@ export class AddFormComponent implements OnInit {
 
     delete data.situacao;
 
+    console.log(data);
+
     if (data._id) {
-      this.roomService.editRoom(data).subscribe(res => {
-        console.log(res);
-      });
+      this.roomService.editRoom(data).subscribe(
+        data => this.emit.next(data),
+        error => console.error(error)
+      );
     } else {
-      this.roomService.createRoom(data).subscribe(res => {
-        console.log(res);
-      });
+      this.roomService.createRoom(data).subscribe(
+        data => this.emit.next(data),
+        error => console.error(error)
+      );
     }
   }
 
