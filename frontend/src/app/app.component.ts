@@ -36,7 +36,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.roomService.getRooms().subscribe(response => {
-      console.log(response);
       this.dataSource.data = response;
     })
 
@@ -60,13 +59,17 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(AddFormComponent);
+    const ref = this.dialog.open(AddFormComponent);
+    ref.componentInstance.emit.subscribe((data: Room) => {
+      this.updateTable(data);
+      ref.close();
+    })
   }
 
   deleteRoom(data: Room) {
     const ref = this.dialog.open(DeleteTableComponent, {data})
     ref.componentInstance.emit.subscribe((id: string) => {
-      this.updateTable(id);
+      this.updateTableOnDelete(id);
       ref.close();
     })
   }
@@ -76,7 +79,11 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(AddFormComponent, {data});
+    const ref = this.dialog.open(AddFormComponent, {data});
+    ref.componentInstance.emit.subscribe((data: Room) => {
+      this.updateTable(data);
+      ref.close();
+    })
   }
 
   openResources(data: Room) {
@@ -95,7 +102,24 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.dialog.open(ReservationsModalComponent, {data});
   }
 
-  updateTable(idDeleted: string) {
+  updateTable(room: Room) {
+    if (room._id) {
+      const data = this.dataSource.data;
+      const index = data.findIndex(e => e._id === room._id);
+
+      if(index >= 0){
+        data[index] = room;
+      }
+      else data.push(room);
+      this.dataSource.data = data;
+    } else {
+      this.roomService.getRooms().subscribe(response => {
+        this.dataSource.data = response;
+      });
+    }
+  }
+
+  updateTableOnDelete(idDeleted: string) {
     const tableData = this.dataSource.data;
 
     const deletedItemIndex = tableData.findIndex(e => e._id === idDeleted);
