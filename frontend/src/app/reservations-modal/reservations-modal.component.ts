@@ -31,6 +31,7 @@ export class ReservationsModalComponent implements OnInit{
     })
     */
    this.service.getClassById('5fbed35f676afafcfec37684').subscribe(data => {
+      data.professor = data.professor.nome;
       this.reservations.push(data);
       this.dataSource.data = this.reservations;
    })
