@@ -14,7 +14,7 @@ export class ClassService {
   }
 
   getClassById(id: string): Observable<Class> {
-      return this.http.get<Class>(`${this.apiUrl}/${id}`);
+      return this.http.get<Class>(`${this.apiUrl}/5fbed35f676afafcfec37684`)
   }
 
 }
