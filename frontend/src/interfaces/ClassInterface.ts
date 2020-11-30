@@ -3,7 +3,10 @@ export interface Class {
   semestre: number;
   numero: number;
   horario: [string];
-  professor: string;
+  professor: {
+    nome: string;
+  };
+  professorName: string;
   aula: [string];
   disciplina: string;
   sala: string;

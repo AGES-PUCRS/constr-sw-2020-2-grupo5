@@ -23,6 +23,7 @@ import { AddFormComponent } from "./add-form/add-form.component";
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import {ResourcesModalComponent} from './resources-modal/resources-modal.component';
 import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
+import { HoursModalComponent } from './hours-modal/hours-modal.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReservationsModalComponent } from './reservations-modal/reservations-mo
     AddFormComponent,
     DeleteTableComponent,
     ResourcesModalComponent,
-    ReservationsModalComponent
+    ReservationsModalComponent,
+    HoursModalComponent
   ],
   imports: [
     BrowserModule,

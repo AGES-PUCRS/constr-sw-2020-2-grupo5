@@ -17,14 +17,18 @@
       <td mat-cell *matCellDef="let element"> {{element.semestre}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="professor">
+    <ng-container matColumnDef="professorName">
       <th mat-header-cell *matHeaderCellDef> Professor </th>
-      <td mat-cell *matCellDef="let element"> {{element.professor}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.professorName}} </td>
     </ng-container>
   
     <ng-container matColumnDef="horas">
       <th mat-header-cell *matHeaderCellDef> Horários </th>
-      <td mat-cell *matCellDef="let element"> {{element.horas}} </td>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="openHours(element)">
+          <mat-icon>insert_invitation</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
