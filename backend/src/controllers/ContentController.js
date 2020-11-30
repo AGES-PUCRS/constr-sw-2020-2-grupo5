@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const axios = require('axios');
 
 const Content = mongoose.model("Content");
-const classesURL = 'http://ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes';
+const classesURL = 'http://ec2-3-15-145-30.us-east-2.compute.amazonaws.com:3000/api/v1/classes';
 
 module.exports = {
   async listAllContents(req, res) {
@@ -24,7 +24,7 @@ module.exports = {
     try {
       let content = await Content.findById(id);
       if (req.query.expand === 'aulas') {
-        const resp = await axios.get('http://ec2-18-218-177-125.us-east-2.compute.amazonaws.com:3000/api/v1/classes');
+        const resp = await axios.get(classesURL);
         const classes = resp.data.data;
         const respFilter = classes ? classes.filter(item => {
           return item.content === id
