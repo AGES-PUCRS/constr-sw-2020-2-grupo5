@@ -1,5 +1,5 @@
 import { Component, OnDestroy, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { RoomService } from './room.service';
+import { RoomService } from '../services/room.service';
 import { OnInit } from '@angular/core';
 import { Room } from 'src/interfaces/RoomsInterface';
 import { MatTableDataSource } from '@angular/material/table';
