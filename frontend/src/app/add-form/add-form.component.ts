@@ -25,7 +25,7 @@ export class AddFormComponent implements OnInit {
       number: (data) ? data.number : null,
       towerNumber: (data) ? data.towerNumber : null,
       capacity: (data) ? data.capacity : null,
-      resources: (data) ? data.resources : null,
+      recursos: (data) ? data.resources.join(',') : null,
       situacao: (data) ? data.online ? '1' : '2' : '1',
     });
   }
@@ -37,7 +37,8 @@ export class AddFormComponent implements OnInit {
     const data = this.roomForm.value;
 
     data.online = data.situacao === '1' ?  false : true; 
-
+    data.resources = data.recursos.split(',');
+    delete data.recursos;
     delete data.situacao;
 
     console.log(data);
