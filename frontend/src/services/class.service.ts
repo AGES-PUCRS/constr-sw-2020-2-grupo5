@@ -10,7 +10,7 @@ export class ClassService {
 
   apiUrl: string;
   constructor(private http: HttpClient) {
-    this.apiUrl = "http://ec2-34-238-114-89.compute-1.amazonaws.com:3000/turma"
+    this.apiUrl = "http://ec2-34-238-241-74.compute-1.amazonaws.com:3000/turma"
   }
 
   getClassById(id: string): Observable<Class> {

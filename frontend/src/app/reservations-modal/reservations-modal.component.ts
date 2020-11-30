@@ -23,6 +23,12 @@ export class ReservationsModalComponent implements OnInit{
   }
 
   ngOnInit() {
+    // Se funcionasse o expand:
+    /*
+    this.dataSource.data = this.data.turmas; 
+    */
+
+    // Sem expand funcionando, mas percorrendo o vetor de turmas e pegando cada id:
     /*
     this.data.turmas.forEach((turma: string) => {
       this.service.getClassById(turma).subscribe(
@@ -30,8 +36,9 @@ export class ReservationsModalComponent implements OnInit{
         error => console.log(error)
       )
     })
+      this.dataSource.data = this.reservations;
     */
-   this.service.getClassById('5fbed35f676afafcfec37684').subscribe(data => {
+   this.service.getClassById('5fc55d09676afafcfec3768b').subscribe(data => {
       const newData = data;
       newData.professorName = data.professor.nome;
       this.reservations.push(data);
