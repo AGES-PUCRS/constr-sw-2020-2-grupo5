@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Room } from 'src/interfaces/RoomsInterface';
 
 @Component({
@@ -12,8 +12,12 @@ export class ResourcesModalComponent{
   resources: string[] = [];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: Room
+    @Inject(MAT_DIALOG_DATA) public data: Room, private dialog: MatDialogRef<ResourcesModalComponent>
   ) {
     this.resources = data.resources;
+  }
+
+  close() {
+    this.dialog.close();
   }
 }
