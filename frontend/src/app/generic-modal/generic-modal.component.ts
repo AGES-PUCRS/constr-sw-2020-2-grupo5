@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { Room } from 'src/interfaces/RoomsInterface';
 
 @Component({
   selector: 'app-generic-modal',
@@ -19,7 +20,7 @@ export class GenericModalComponent{
       buttonCloseText: string;
       type: 'info' | 'delete';
       buttonSubmitText?: string;
-      objectData?: Object;
+      objectData?: Room;
       submitFunction?: {(): Observable<boolean>};  
     }
   ) { }
@@ -31,7 +32,7 @@ export class GenericModalComponent{
   doFunction() {
     if (typeof this.data.submitFunction === 'function') {
       this.data.submitFunction().subscribe(
-        val => this.emitter.next(this.data.objectData._id),
+        val => this.emitter.next(this.data.objectData?._id),
         error => console.warn(error)
       )
     }; 

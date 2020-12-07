@@ -7,7 +7,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { AddFormComponent } from "./add-form/add-form.component";
-import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import { ResourcesModalComponent } from './resources-modal/resources-modal.component';
 import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
 import { GenericModalComponent } from './generic-modal/generic-modal.component';
