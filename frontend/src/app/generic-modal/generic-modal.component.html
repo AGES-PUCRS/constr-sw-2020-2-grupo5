@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{data.text}}</h1>
+<p>{{data.description}}</p>
+
+<div *ngIf="data.type == 'delete'; else elseBlock" mat-dialog-content class="buttons">
+
+    <button mat-flat-button color="primary" (click)="doFunction()">{{data.buttonSubmitText}}</button>
+    <button mat-flat-button color="error" (click)="close()">{{data.buttonCloseText}}</button></div>
+
+<ng-template #elseBlock>
+
+    <div #elseBlock mat-dialog-content class="buttons">
+
+        <button mat-flat-button color="primary" (click)="close()">{{data.buttonCloseText}}</button>
+
+    </div>
+</ng-template>

@@ -10,6 +10,7 @@ import { AddFormComponent } from "./add-form/add-form.component";
 import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import { ResourcesModalComponent } from './resources-modal/resources-modal.component';
 import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -67,8 +68,16 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   deleteRoom(data: Room) {
-    const ref = this.dialog.open(DeleteTableComponent, {data})
-    ref.componentInstance.emit.subscribe((id: string) => {
+    const ref = this.dialog.open(GenericModalComponent, {data: {
+      text: 'Excluir',
+      description: 'Tem certeza que deseja excluir?',
+      buttonCloseText: 'Fechar',
+      buttonSubmitText: 'Excluir',
+      type: 'delete',
+      objectData: data,
+      submitFunction: () => this.roomService.deleteRoom(data)
+    }})
+    ref.componentInstance.emitter.subscribe((id: string) => {
       this.updateTableOnDelete(id);
       ref.close();
     })

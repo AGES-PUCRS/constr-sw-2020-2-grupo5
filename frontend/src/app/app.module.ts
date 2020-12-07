@@ -24,6 +24,7 @@ import { DeleteTableComponent } from "./delete-table/delete-table.component";
 import {ResourcesModalComponent} from './resources-modal/resources-modal.component';
 import { ReservationsModalComponent } from './reservations-modal/reservations-modal.component';
 import { HoursModalComponent } from './hours-modal/hours-modal.component';
+import { GenericModalComponent } from './generic-modal/generic-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HoursModalComponent } from './hours-modal/hours-modal.component';
     DeleteTableComponent,
     ResourcesModalComponent,
     ReservationsModalComponent,
-    HoursModalComponent
+    HoursModalComponent,
+    GenericModalComponent
   ],
   imports: [
     BrowserModule,
