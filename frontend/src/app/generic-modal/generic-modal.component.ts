@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   templateUrl: './generic-modal.component.html',
   styleUrls: ['./generic-modal.component.css']
 })
-export class GenericModalComponent implements OnInit {
+export class GenericModalComponent{
 
   @Output() emitter = new EventEmitter;
 
@@ -23,9 +23,6 @@ export class GenericModalComponent implements OnInit {
       submitFunction?: {(): Observable<boolean>};  
     }
   ) { }
-
-  ngOnInit(): void {
-  }
 
   close() {
     this.dialog.close();
