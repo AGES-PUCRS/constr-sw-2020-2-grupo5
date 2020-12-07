@@ -68,10 +68,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   deleteRoom(data: Room) {
     const ref = this.dialog.open(GenericModalComponent, {data: {
-      text: 'Excluir',
-      description: 'Tem certeza que deseja excluir?',
+      text: `Remoção da sala ${data.number}`,
+      description: 'Tem certeza que deseja deletar?',
       buttonCloseText: 'Fechar',
-      buttonSubmitText: 'Excluir',
+      buttonSubmitText: 'Confirmar',
       type: 'delete',
       objectData: data,
       submitFunction: () => this.roomService.deleteRoom(data)

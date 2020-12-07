@@ -8,6 +8,22 @@ import { Room } from 'src/interfaces/RoomsInterface';
   templateUrl: './generic-modal.component.html',
   styleUrls: ['./generic-modal.component.css']
 })
+
+
+/**
+ * Modal to delete or show info.
+ * 
+ * Props to pass: 
+ * text: string
+ * description: string
+ * buttonCloseText: string
+ * type: info or delete
+ * buttonSubmitText: string - OPTIONAL
+ * objectData: Room Object - OPTIONAL
+ * submitFunction: Function - OPTIONAL
+ * 
+ */
+
 export class GenericModalComponent{
 
   @Output() emitter = new EventEmitter;
@@ -32,7 +48,7 @@ export class GenericModalComponent{
   doFunction() {
     if (typeof this.data.submitFunction === 'function') {
       this.data.submitFunction().subscribe(
-        val => this.emitter.next(this.data.objectData?._id),
+        () => this.emitter.next(this.data.objectData?._id),
         error => console.warn(error)
       )
     }; 
